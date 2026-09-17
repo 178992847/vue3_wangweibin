@@ -1,0 +1,6 @@
+/* 全局基础样式 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}

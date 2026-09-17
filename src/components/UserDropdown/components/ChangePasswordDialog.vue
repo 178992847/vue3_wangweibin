@@ -1,19 +1,21 @@
 <script setup>
-import { computed, nextTick, reactive, ref, watch } from 'vue'
+import { nextTick, reactive, ref, watch } from 'vue'
 import { ElMessage } from 'element-plus'
 import { useAuthStore } from '@/stores/auth'
 
-const props = defineProps({
-  modelValue: { type: Boolean, default: false },
-})
-const emit = defineEmits(['update:modelValue'])
+const visible = defineModel({ type: Boolean, default: false })
+
+// 其他示例
+// 无参数 v-model —— 名字固定省略，对应父组件 v-model
+// const visible = defineModel({ type: Boolean, default: false })
+
+// 带参数 v-model:title —— 第一个参数就是名字
+// const title = defineModel('title', { type: String, default: '修改密码' })
+
+// 带参数 v-model:loading —— 第一个参数就是名字
+// const loading = defineModel('loading', { type: Boolean, default: false })
 
 const authStore = useAuthStore()
-
-const visible = computed({
-  get: () => props.modelValue,
-  set: (value) => emit('update:modelValue', value),
-})
 
 const formRef = ref(null)
 const submitting = ref(false)
@@ -61,7 +63,7 @@ const rules = {
 
 // 每次打开弹窗时重置表单
 watch(
-  () => props.modelValue,
+  visible,
   async (value) => {
     if (!value) return
     form.oldPassword = ''

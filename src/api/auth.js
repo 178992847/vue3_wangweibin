@@ -7,6 +7,7 @@
 
 // 演示账号
 const MOCK_USERS = [
+  { username: '王伟斌', password: '123456' },
   { username: 'admin', password: '123456' },
 ]
 

@@ -13,21 +13,36 @@ const router = createRouter({
     {
       path: '/login',
       name: 'Login',
-      component: () => import('@/views/LoginView.vue'),
+      component: () => import('@/views/login/index.vue'),
       meta: { title: '登录', public: true, layout: false },
     },
     {
       path: '/home',
       name: 'Home',
-      component: () => import('@/views/HomeView.vue'),
+      component: () => import('@/views/home/index.vue'),
       meta: { title: '首页' },
     },
     {
       path: '/form/editable-tabs',
       name: 'FormEditableTabs',
-      component: () => import('@/views/FormTabsView.vue'),
+      component: () => import('@/views/form/editable-tabs/index.vue'),
       meta: { title: '可编辑标签页', group: '表单管理' },
     },
+    {
+      path: '/form/editTable',
+      name: 'FormEditTable',
+      component: () => import('@/views/form/editTable/index.vue'),
+      meta: { title: '编辑表格', group: '表单管理' },
+    },
+    // 新增页面示例：在「表单管理」分组下新增页面时，
+    // 1) 新建 src/views/form/xxx/index.vue（页面私有组件放其 components/）
+    // 2) 在 AppMenu 的 /form children 中加一个 { index: '/form/xxx', title: 'XXX' }
+    // {
+    //   path: '/form/xxx',
+    //   name: 'FormXxx',
+    //   component: () => import('@/views/form/xxx/index.vue'),
+    //   meta: { title: 'XXX页面', group: '表单管理' },
+    // },
   ],
 })
 

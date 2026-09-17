@@ -20,6 +20,11 @@ const menuItems = [
         title: '可编辑标签页',
         icon: 'Edit',
       },
+      {
+        index: '/form/editTable',
+        title: '编辑表格',
+        icon: 'EditPen',
+      },
     ],
   },
 ]

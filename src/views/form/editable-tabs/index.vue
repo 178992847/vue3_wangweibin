@@ -47,53 +47,57 @@ const removeTab = (tab) => {
 </script>
 
 <template>
-  <div class="editable-tabs">
-    <div class="tabs-toolbar">
-      <el-alert
-        title="切换标签页不会丢失已填写的数据；通过「管理标签页」可新增、删除、重命名选项卡"
-        type="info"
-        :closable="false"
-        show-icon
-        class="tabs-tip"
-      />
-      <el-button type="primary" @click="drawerVisible = true">
-        <el-icon><Setting /></el-icon>管理标签页
-      </el-button>
-    </div>
-
-    <el-tabs v-model="activeId" type="card">
-      <el-tab-pane
-        v-for="tab in tabs"
-        :key="tab.id"
-        :name="tab.id"
-        :label="tab.name"
-      >
-        <TabFormPanel :tab-name="tab.name" />
-      </el-tab-pane>
-    </el-tabs>
-
-    <!-- 标签页管理抽屉：新增 / 删除 / 重命名 -->
-    <el-drawer v-model="drawerVisible" title="标签页管理" size="440px">
-      <div class="drawer-toolbar">
-        <el-button type="primary" @click="addTab"><el-icon><Plus /></el-icon>新增标签页</el-button>
-        <span class="drawer-count">当前 {{ tabs.length }} 个标签页</span>
-      </div>
-      <div class="drawer-list">
-        <div v-for="(tab, index) in tabs" :key="tab.id" class="drawer-row">
-          <el-tag type="info" class="row-index">{{ index + 1 }}</el-tag>
-          <el-input
-            v-model="tab.name"
-            maxlength="12"
-            show-word-limit
-            placeholder="请输入标签页名称"
+  <div class="form-tabs-view">
+    <el-card shadow="never">
+      <div class="editable-tabs">
+        <div class="tabs-toolbar">
+          <el-alert
+            title="切换标签页不会丢失已填写的数据；通过「管理标签页」可新增、删除、重命名选项卡"
+            type="info"
+            :closable="false"
+            show-icon
+            class="tabs-tip"
           />
-          <el-button type="danger" plain @click="removeTab(tab)">
-            <el-icon><Delete /></el-icon>删除
+          <el-button type="primary" @click="drawerVisible = true">
+            <el-icon><Setting /></el-icon>管理标签页
           </el-button>
         </div>
+
+        <el-tabs v-model="activeId" type="card">
+          <el-tab-pane
+            v-for="tab in tabs"
+            :key="tab.id"
+            :name="tab.id"
+            :label="tab.name"
+          >
+            <TabFormPanel :tab-name="tab.name" />
+          </el-tab-pane>
+        </el-tabs>
+
+        <!-- 标签页管理抽屉：新增 / 删除 / 重命名 -->
+        <el-drawer v-model="drawerVisible" title="标签页管理" size="440px">
+          <div class="drawer-toolbar">
+            <el-button type="primary" @click="addTab"><el-icon><Plus /></el-icon>新增标签页</el-button>
+            <span class="drawer-count">当前 {{ tabs.length }} 个标签页</span>
+          </div>
+          <div class="drawer-list">
+            <div v-for="(tab, index) in tabs" :key="tab.id" class="drawer-row">
+              <el-tag type="info" class="row-index">{{ index + 1 }}</el-tag>
+              <el-input
+                v-model="tab.name"
+                maxlength="12"
+                show-word-limit
+                placeholder="请输入标签页名称"
+              />
+              <el-button type="danger" plain @click="removeTab(tab)">
+                <el-icon><Delete /></el-icon>删除
+              </el-button>
+            </div>
+          </div>
+          <p class="drawer-tip">名称修改后即时生效，当前激活的标签页不可被删除后置空（自动切换相邻项）。</p>
+        </el-drawer>
       </div>
-      <p class="drawer-tip">名称修改后即时生效，当前激活的标签页不可被删除后置空（自动切换相邻项）。</p>
-    </el-drawer>
+    </el-card>
   </div>
 </template>
 

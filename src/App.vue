@@ -1,10 +1,18 @@
 <script setup>
-import AppMenu from '@/components/AppMenu.vue'
-import AppBreadcrumb from '@/components/AppBreadcrumb.vue'
+import { useRoute } from 'vue-router'
+import AppMenu from '@/components/AppMenu/index.vue'
+import AppBreadcrumb from '@/components/AppBreadcrumb/index.vue'
+import UserDropdown from '@/components/UserDropdown/index.vue'
+
+const route = useRoute()
 </script>
 
 <template>
-  <el-container class="layout">
+  <!-- 登录等全屏页面：不使用后台布局 -->
+  <router-view v-if="route.meta.layout === false" />
+
+  <!-- 后台主框架 -->
+  <el-container v-else class="layout">
     <!-- 左侧固定菜单 -->
     <el-aside width="210px" class="layout-aside">
       <div class="layout-logo">
@@ -15,9 +23,11 @@ import AppBreadcrumb from '@/components/AppBreadcrumb.vue'
     </el-aside>
 
     <el-container>
-      <!-- 顶部：面包屑 -->
+      <!-- 顶部：面包屑 + 用户信息 -->
       <el-header class="layout-header">
         <AppBreadcrumb />
+
+        <UserDropdown />
       </el-header>
 
       <!-- 主内容区 -->
@@ -66,6 +76,7 @@ import AppBreadcrumb from '@/components/AppBreadcrumb.vue'
 .layout-header {
   display: flex;
   align-items: center;
+  gap: 12px;
   background-color: #fff;
   border-bottom: 1px solid var(--el-border-color-light);
 }

@@ -1,5 +1,5 @@
 <script setup>
-import EditableTabs from '@/components/EditableTabs.vue'
+import EditableTabs from '@/components/EditableTabs/index.vue'
 </script>
 
 <template>

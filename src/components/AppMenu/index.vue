@@ -1,25 +1,24 @@
 <script setup>
 import { useRoute } from 'vue-router'
-import { HomeFilled, Document, Edit } from '@element-plus/icons-vue'
 
 const route = useRoute()
 
-// 菜单配置：图标在 script 中引用，模板通过 <component :is> 渲染
+// 菜单配置：图标为全局注册的组件名（字符串），模板通过 <component :is> 渲染
 const menuItems = [
   {
     index: '/home',
     title: '首页',
-    icon: HomeFilled,
+    icon: 'HomeFilled',
   },
   {
     index: '/form',
     title: '表单管理',
-    icon: Document,
+    icon: 'Document',
     children: [
       {
         index: '/form/editable-tabs',
         title: '可编辑标签页',
-        icon: Edit,
+        icon: 'Edit',
       },
     ],
   },

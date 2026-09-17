@@ -1,8 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
-import { Setting, Plus, Delete } from '@element-plus/icons-vue'
-import TabFormPanel from './TabFormPanel.vue'
+import TabFormPanel from './components/TabFormPanel.vue'
 
 let uid = 0
 const createTab = (name) => {
@@ -57,8 +56,8 @@ const removeTab = (tab) => {
         show-icon
         class="tabs-tip"
       />
-      <el-button type="primary" :icon="Setting" @click="drawerVisible = true">
-        管理标签页
+      <el-button type="primary" @click="drawerVisible = true">
+        <el-icon><Setting /></el-icon>管理标签页
       </el-button>
     </div>
 
@@ -76,7 +75,7 @@ const removeTab = (tab) => {
     <!-- 标签页管理抽屉：新增 / 删除 / 重命名 -->
     <el-drawer v-model="drawerVisible" title="标签页管理" size="440px">
       <div class="drawer-toolbar">
-        <el-button type="primary" :icon="Plus" @click="addTab">新增标签页</el-button>
+        <el-button type="primary" @click="addTab"><el-icon><Plus /></el-icon>新增标签页</el-button>
         <span class="drawer-count">当前 {{ tabs.length }} 个标签页</span>
       </div>
       <div class="drawer-list">
@@ -88,8 +87,8 @@ const removeTab = (tab) => {
             show-word-limit
             placeholder="请输入标签页名称"
           />
-          <el-button type="danger" plain :icon="Delete" @click="removeTab(tab)">
-            删除
+          <el-button type="danger" plain @click="removeTab(tab)">
+            <el-icon><Delete /></el-icon>删除
           </el-button>
         </div>
       </div>

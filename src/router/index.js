@@ -34,6 +34,12 @@ const router = createRouter({
       component: () => import('@/views/form/editTable/index.vue'),
       meta: { title: '编辑表格', group: '表单管理' },
     },
+    {
+      path: '/file/upload',
+      name: 'FileUploadPage',
+      component: () => import('@/views/file/upload/index.vue'),
+      meta: { title: '文件上传', group: '文件管理' },
+    },
     // 新增页面示例：在「表单管理」分组下新增页面时，
     // 1) 新建 src/views/form/xxx/index.vue（页面私有组件放其 components/）
     // 2) 在 AppMenu 的 /form children 中加一个 { index: '/form/xxx', title: 'XXX' }

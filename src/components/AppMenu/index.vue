@@ -27,6 +27,18 @@ const menuItems = [
       },
     ],
   },
+  {
+    index: '/file',
+    title: '文件管理',
+    icon: 'FolderOpened',
+    children: [
+      {
+        index: '/file/upload',
+        title: '文件上传',
+        icon: 'UploadFilled',
+      },
+    ],
+  },
 ]
 </script>
 

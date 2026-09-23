@@ -83,5 +83,26 @@ const route = useRoute()
 
 .layout-main {
   background-color: var(--el-fill-color-lighter);
+  /* Windows 下主内容区滚动条细化，避免粗重系统滚动条破坏视觉 */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(144, 147, 153, 0.3) transparent;
+}
+
+.layout-main::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.layout-main::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: rgba(144, 147, 153, 0.28);
+}
+
+.layout-main::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(144, 147, 153, 0.48);
+}
+
+.layout-main::-webkit-scrollbar-track {
+  background: transparent;
 }
 </style>
